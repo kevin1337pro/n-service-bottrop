@@ -16,14 +16,14 @@ const services = [
   {
     number: "02",
     title: "Garten- & Grünpflege",
-    text: "Regelmäßige oder einmalige Pflege für Gärten, Grünflächen und Außenbereiche.",
-    keywords: "Rasen · Hecken · Grünflächen",
+    text: "Regelmäßige oder einmalige Pflege für Gärten und Grünflächen – inklusive Hecken- und Baumschnitt nach Absprache.",
+    keywords: "Rasen · Hecken · Baumschnitt",
   },
   {
     number: "03",
     title: "Reinigung",
-    text: "Saubere Lösungen für private und gewerbliche Räume – passend zum tatsächlichen Bedarf.",
-    keywords: "Haushalt · Objekt · Außenbereich",
+    text: "Saubere Lösungen für private und gewerbliche Bereiche – von der Objekt- bis zur Hochdruckreinigung.",
+    keywords: "Objekt · Außenbereich · Hochdruck",
   },
   {
     number: "04",
@@ -36,6 +36,39 @@ const services = [
     title: "Transporte & Abholungen",
     text: "Abholung und Transport sperriger Gegenstände in Bottrop und der Umgebung.",
     keywords: "Abholung · Transport · Lieferung",
+  },
+];
+
+const workImages = [
+  {
+    src: "/services/baumschnitt.jpg",
+    title: "Baumschnitt",
+    detail: "Sicher & fachgerecht",
+    alt: "Professioneller Baumschnitt mit Teleskop-Astsäge in einem Garten in Bottrop",
+  },
+  {
+    src: "/services/gartenarbeit.jpg",
+    title: "Gartenarbeit",
+    detail: "Sauber gepflegt",
+    alt: "N-Service Mitarbeiter bei der Heckenpflege in einem privaten Garten",
+  },
+  {
+    src: "/services/entruempelung.jpg",
+    title: "Entrümpelung",
+    detail: "Geordnet angepackt",
+    alt: "Zwei Mitarbeiter tragen bei einer Entrümpelung gemeinsam ein Möbelstück aus einer Garage",
+  },
+  {
+    src: "/services/transport.jpg",
+    title: "Transport",
+    detail: "Geschützt verladen",
+    alt: "Zwei Mitarbeiter verladen ein geschütztes Möbelstück in einen Transporter",
+  },
+  {
+    src: "/services/hochdruckreinigung.jpg",
+    title: "Hochdruckreinigung",
+    detail: "Sichtbar sauber",
+    alt: "Professionelle Hochdruckreinigung einer gepflasterten Terrasse",
   },
 ];
 
@@ -111,6 +144,7 @@ export default function Home() {
         </a>
         <nav aria-label="Hauptnavigation">
           <a href="#leistungen">Leistungen</a>
+          <a href="#einsatz">Einsätze</a>
           <a href="#ablauf">Ablauf</a>
           <a href="#gebiet">Einsatzgebiet</a>
           <a href="#faq">FAQ</a>
@@ -179,6 +213,38 @@ export default function Home() {
               <p>{service.text}</p>
               <small>{service.keywords}</small>
             </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="showcase" id="einsatz">
+        <div className="showcase-heading">
+          <div>
+            <p className="kicker">N-Service im Einsatz</p>
+            <h2>Arbeit, die man<br />sehen kann.</h2>
+          </div>
+          <p>
+            Von Garten und Grundstück bis Keller und Transport – wir packen
+            dort an, wo praktische Hilfe gebraucht wird.
+          </p>
+        </div>
+        <div className="showcase-grid">
+          {workImages.map((image, index) => (
+            <figure className={`showcase-card card-${index + 1}`} key={image.src}>
+              <img
+                src={image.src}
+                alt={image.alt}
+                width="1536"
+                height="1024"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <strong>{image.title}</strong>
+                <small>{image.detail}</small>
+              </figcaption>
+            </figure>
           ))}
         </div>
       </section>
