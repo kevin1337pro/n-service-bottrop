@@ -20,6 +20,16 @@ export const metadata: Metadata = {
   authors: [{ name: "N-Service, Viktor Nesterenko" }],
   creator: "N-Service",
   alternates: { canonical: "/" },
+  icons: {
+    icon: [
+      { url: "/favicon-32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon.png", type: "image/png", sizes: "512x512" },
+    ],
+    shortcut: "/favicon-32.png",
+    apple: [
+      { url: "/apple-touch-icon.png", type: "image/png", sizes: "180x180" },
+    ],
+  },
   openGraph: {
     type: "website",
     locale: "de_DE",
