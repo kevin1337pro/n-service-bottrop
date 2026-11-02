@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PhinixBanner from "./PhinixBanner";
 
 export const metadata: Metadata = {
   title: "Entrümpelung, Garten & Hausmeisterservice",
@@ -9,35 +10,93 @@ export const metadata: Metadata = {
 const services = [
   {
     number: "01",
+    icon: "clearance",
     title: "Entrümpelung & Haushaltsauflösung",
-    text: "Keller, Wohnung, Garage oder komplettes Haus – persönlich besprochen und zuverlässig umgesetzt.",
+    text: "Von einzelnen Räumen bis zur vollständigen Haushaltsauflösung – Umfang und Vorgehen werden vorab persönlich abgestimmt.",
     keywords: "Wohnung · Keller · Garage",
+    details: [
+      "Keller, Dachboden und Garage",
+      "Wohnungen und komplette Haushalte",
+      "Besenreine Übergabe nach Absprache",
+    ],
   },
   {
     number: "02",
+    icon: "garden",
     title: "Garten- & Grünpflege",
-    text: "Regelmäßige oder einmalige Pflege für Gärten und Grünflächen – inklusive Hecken- und Baumschnitt nach Absprache.",
+    text: "Einmalige Unterstützung oder wiederkehrende Pflege für private Gärten, Grundstücke und kleinere Grünflächen.",
     keywords: "Rasen · Hecken · Baumschnitt",
+    details: [
+      "Rasen- und Beetpflege",
+      "Hecken-, Strauch- und Baumschnitt",
+      "Grünschnitt nach Vereinbarung",
+    ],
   },
   {
     number: "03",
+    icon: "cleaning",
     title: "Reinigung",
-    text: "Saubere Lösungen für private und gewerbliche Bereiche – von der Objekt- bis zur Hochdruckreinigung.",
+    text: "Gründliche Reinigung für ausgewählte Innen- und Außenbereiche – passend zu Fläche, Material und Verschmutzung.",
     keywords: "Objekt · Außenbereich · Hochdruck",
+    details: [
+      "Terrassen, Wege und Einfahrten",
+      "Gemeinschafts- und Außenflächen",
+      "Hochdruckreinigung nach Materialprüfung",
+    ],
   },
   {
     number: "04",
+    icon: "caretaker",
     title: "Hausmeisterservice",
-    text: "Praktische Hilfe rund um Immobilie und Grundstück, flexibel nach Absprache.",
+    text: "Ein verlässlicher Ansprechpartner für regelmäßig anfallende Aufgaben rund um Immobilie und Grundstück.",
     keywords: "Kontrolle · Pflege · Kleinaufgaben",
+    details: [
+      "Kontrollgänge nach Vereinbarung",
+      "Pflege von Außenbereichen",
+      "Kleine Handgriffe und Koordination",
+    ],
   },
   {
     number: "05",
+    icon: "transport",
     title: "Transporte & Abholungen",
-    text: "Abholung und Transport sperriger Gegenstände in Bottrop und der Umgebung.",
+    text: "Abholung, Tragehilfe und Transport sperriger Gegenstände in Bottrop und der näheren Umgebung.",
     keywords: "Abholung · Transport · Lieferung",
+    details: [
+      "Möbel und sperrige Gegenstände",
+      "Abholungen und Lieferfahrten",
+      "Geschütztes Verladen nach Absprache",
+    ],
   },
 ];
+
+type ServiceIconName = (typeof services)[number]["icon"];
+
+function ServiceIcon({ name }: { name: ServiceIconName }) {
+  const common = {
+    viewBox: "0 0 64 64",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 2.4,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    "aria-hidden": true,
+  };
+
+  if (name === "clearance") {
+    return <svg {...common}><path d="M10 23 32 11l22 12-22 12L10 23Z"/><path d="M10 23v24l22 12 22-12V23M32 35v24"/><path d="m22 17 22 12"/></svg>;
+  }
+  if (name === "garden") {
+    return <svg {...common}><path d="M12 49c18 1 34-9 40-35-25 2-39 13-40 35Z"/><path d="M15 48c10-10 18-17 33-29"/><path d="M28 37c-1-6-1-10 0-15M36 31c5 0 9 1 13 3"/></svg>;
+  }
+  if (name === "cleaning") {
+    return <svg {...common}><path d="M16 17h20l5 8-10 5H16V17Z"/><path d="M22 30v21h18"/><path d="M42 34h10M45 42h12M42 50h10"/><circle cx="14" cy="51" r="4"/></svg>;
+  }
+  if (name === "caretaker") {
+    return <svg {...common}><path d="M25 11a14 14 0 0 0 13 20L55 48 48 55 31 38A14 14 0 0 0 11 25l9 5 9-9-4-10Z"/><path d="m43 46 3-3"/></svg>;
+  }
+  return <svg {...common}><path d="M7 17h33v28H7zM40 28h9l8 9v8H40z"/><circle cx="18" cy="48" r="5"/><circle cx="48" cy="48" r="5"/><path d="M12 24h19M12 31h13"/></svg>;
+}
 
 const workImages = [
   {
@@ -92,6 +151,16 @@ const faqs = [
     question: "Sind auch einzelne und kurzfristige Einsätze möglich?",
     answer:
       "Ja. Umfang und Termin werden persönlich abgestimmt. Fragen Sie Ihren gewünschten Einsatz am besten direkt an.",
+  },
+  {
+    question: "Welche Informationen helfen bei einer schnellen Einschätzung?",
+    answer:
+      "Nennen Sie den Einsatzort, die gewünschte Leistung und den ungefähren Umfang. Fotos per WhatsApp helfen dabei, die Aufgabe vorab besser einzuordnen.",
+  },
+  {
+    question: "Kann ich mehrere Leistungen miteinander kombinieren?",
+    answer:
+      "Ja. Zum Beispiel lassen sich Gartenpflege, Abholung und Reinigung in einer Anfrage zusammenfassen. N-Service stimmt den passenden Ablauf persönlich mit Ihnen ab.",
   },
 ];
 
@@ -208,12 +277,25 @@ export default function Home() {
         <div className="service-grid">
           {services.map((service) => (
             <article className="service-item" key={service.number}>
-              <div className="service-top"><span>{service.number}</span><i aria-hidden="true">↗</i></div>
+              <div className="service-top">
+                <span>{service.number}</span>
+                <i className="service-icon"><ServiceIcon name={service.icon} /></i>
+              </div>
               <h3>{service.title}</h3>
               <p>{service.text}</p>
+              <ul>
+                {service.details.map((detail) => <li key={detail}>{detail}</li>)}
+              </ul>
               <small>{service.keywords}</small>
             </article>
           ))}
+        </div>
+        <div className="service-note">
+          <div>
+            <span>?</span>
+            <p><strong>Nicht sicher, welche Leistung passt?</strong> Ein Foto und zwei Sätze zur Aufgabe reichen für den ersten Kontakt.</p>
+          </div>
+          <a href="https://wa.me/491792273411?text=Hallo%20N-Service%2C%20ich%20m%C3%B6chte%20mein%20Projekt%20kurz%20zeigen.">Projekt kurz zeigen <span aria-hidden="true">↗</span></a>
         </div>
       </section>
 
@@ -260,6 +342,20 @@ export default function Home() {
           <li><span>02</span><div><strong>Details klären</strong><p>Umfang, Ort und passenden Termin persönlich abstimmen.</p></div></li>
           <li><span>03</span><div><strong>Wir packen an</strong><p>Die vereinbarte Leistung zuverlässig vor Ort erledigen.</p></div></li>
         </ol>
+      </section>
+
+      <section className="promise" aria-labelledby="promise-title">
+        <div className="promise-copy">
+          <p className="kicker">Darauf kommt es an</p>
+          <h2 id="promise-title">Praktisch gedacht.<br />Persönlich gelöst.</h2>
+          <p>Jede Aufgabe ist anders. Deshalb beginnt guter Service nicht mit einem Standardpaket, sondern mit einer klaren Abstimmung.</p>
+        </div>
+        <div className="promise-grid">
+          <article><span className="geo geo-one" aria-hidden="true"/><strong>Passend statt pauschal</strong><p>Leistung und Umfang orientieren sich an der tatsächlichen Aufgabe vor Ort.</p></article>
+          <article><span className="geo geo-two" aria-hidden="true"/><strong>Direkter Kontakt</strong><p>Sie sprechen persönlich mit Ihrem Ansprechpartner – vom ersten Foto bis zum Termin.</p></article>
+          <article><span className="geo geo-three" aria-hidden="true"/><strong>Regional unterwegs</strong><p>Kurze Wege in Bottrop-Kirchhellen und im nördlichen Ruhrgebiet.</p></article>
+          <article><span className="geo geo-four" aria-hidden="true"/><strong>Klar abgestimmt</strong><p>Aufgabe, Einsatzort und gewünschter Zeitraum werden vorab gemeinsam geklärt.</p></article>
+        </div>
       </section>
 
       <section className="section local" id="gebiet">
@@ -315,6 +411,8 @@ export default function Home() {
         <p>Entrümpelung · Garten · Reinigung · Hausmeisterservice · Transporte</p>
         <div><span>Viktor Nesterenko · Inhaber</span><span>Bottrop-Kirchhellen & Umgebung</span><span>Termine nach Vereinbarung</span></div>
       </footer>
+
+      <PhinixBanner />
 
       <a className="mobile-whatsapp" href="https://wa.me/491792273411?text=Hallo%20N-Service%2C%20ich%20m%C3%B6chte%20eine%20Leistung%20anfragen." aria-label="N-Service per WhatsApp kontaktieren">
         WhatsApp <span>↗</span>
